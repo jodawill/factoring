@@ -1,5 +1,5 @@
 make all:
-	gcc factor.c -o factor
+	gcc factor.c -o factor -lm
 
 clean:
 	rm factor
