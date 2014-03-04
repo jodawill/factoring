@@ -19,9 +19,10 @@ int main(int argc, char *argv[]) {
  p = n;
 
  for (int c = 2; c < n && r < n; c += 2) {
-  if (!isprime(c) && n % c == 0) {
+  if (n % c == 0 && !isprime(c)) {
    if (f == 0) printf("\nFactors:\n");
    d++;
+   if (f > 0) printf(", ");
    while (p % c == 0 && p != 1) {
     f++;
     q++;
@@ -30,13 +31,13 @@ int main(int argc, char *argv[]) {
    }
    printf("%d", c);
    if (q > 1) printf("^%d", q);
-   printf("\n");
    q = 0;
   }
 
   if (c == 2) c--;
  }
 
+ if (f > 0) printf("\n");
  printf("\nResults:\n");
 
  if (f > 0) {
