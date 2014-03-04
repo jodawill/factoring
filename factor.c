@@ -2,10 +2,11 @@
 #include <math.h>
 
 int isprime(int n) {
- for (int c = 2; c < n; c++) {
+ for (int c = 2; c <= sqrt(n); c += 2) {
   if (n % c == 0) {
    return 1;
   }
+  if (c == 2) c--;
  }
  return 0;
 }
