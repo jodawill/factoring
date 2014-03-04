@@ -10,15 +10,18 @@ int isprime(int n) {
 }
 
 int main(int argc, char *argv[]) {
- int n, p, q, r;
+ int d, f, n, p, q, r;
  r = 1;
  printf("Enter the number you'd like to factor.\n");
  scanf("%d", &n);
+ p = n;
 
  for (int c = 2; c < n && r < n; c++) {
   if (!isprime(c) && n % c == 0) {
-   p = n;
+   if (f == 0) printf("\nFactors:\n");
+   d++;
    while (p % c == 0 && p != 1) {
+    f++;
     q++;
     p /= c;
     r *= c;
@@ -28,6 +31,15 @@ int main(int argc, char *argv[]) {
    printf("\n");
    q = 0;
   }
+ }
+
+ printf("\nResults:\n");
+
+ if (f > 0) {
+  printf("%d is a composite number with %d factors, %d of which are"
+         " distinct.\n", n, f, d);
+ } else {
+  printf("%d is prime.\n", n);
  }
 
  return 0;
