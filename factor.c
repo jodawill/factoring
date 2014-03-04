@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 
 int isprime(int n) {
  for (int c = 2; c <= sqrt(n); c += 2) {
@@ -14,8 +15,12 @@ int isprime(int n) {
 int main(int argc, char *argv[]) {
  int d, f, n, p, q, r;
  r = 1;
- printf("Enter the number you'd like to factor.\n");
- scanf("%d", &n);
+ if (argc == 0) {
+  printf("Enter the number you'd like to factor.\n");
+  scanf("%d", &n);
+ } else {
+  n = atoi(argv[1]);
+ }
  p = n;
 
  for (int c = 2; c < n && r < n; c += 2) {
