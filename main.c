@@ -10,16 +10,23 @@ int isprime(int n) {
 }
 
 int main(int argc, char *argv[]) {
- int n, p;
+ int n, p, q, r;
+ r = 1;
+ printf("Enter the number you'd like to factor.\n");
  scanf("%d", &n);
 
- for (int c = 2; c < n; c++) {
+ for (int c = 2; c < n && r < n; c++) {
   if (!isprime(c) && n % c == 0) {
    p = n;
    while (p % c == 0 && p != 1) {
-    printf("%d\n", c);
+    q++;
     p /= c;
+    r *= c;
    }
+   printf("%d", c);
+   if (q > 1) printf("^%d", q);
+   printf("\n");
+   q = 0;
   }
  }
 
