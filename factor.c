@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
  scanf("%d", &n);
  p = n;
 
- for (int c = 2; c < sqrt(n) && r < n; c += 2) {
+ for (int c = 2; c < n && r < n; c += 2) {
   if (!isprime(c) && n % c == 0) {
    if (f == 0) printf("\nFactors:\n");
    d++;
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
    q = 0;
   }
 
-  if (c == 2) c++;
+  if (c == 2) c--;
  }
 
  printf("\nResults:\n");
