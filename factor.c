@@ -15,7 +15,7 @@ int isprime(int n) {
 int main(int argc, char *argv[]) {
  int d, f, n, p, q, r;
  r = 1;
- if (argc == 0) {
+ if (argc < 2) {
   printf("Enter the number you'd like to factor.\n");
   scanf("%d", &n);
  } else {
