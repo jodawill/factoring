@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include <strings.h>
 
 int isprime(int n) {
  for (int c = 2; c <= sqrt(n); c += 2) {
@@ -12,6 +13,21 @@ int isprime(int n) {
  return 0;
 }
 
+int list_primes(int n) {
+ int q = 0;
+ for (int c = 2; c < n; c += 2) {
+  if (isprime(c) == 0) {
+   if (q > 0) printf(", ");
+   printf("%d", c);
+   q++;
+  }
+  if (c == 2) c--;
+ }
+
+ if (q > 0) printf("\n\nResults:\nFound %d primes under %d.\n", q, n);
+ return 0;
+}
+
 int main(int argc, char *argv[]) {
  int d, f, n, p, q, r;
  r = 1;
@@ -19,7 +35,12 @@ int main(int argc, char *argv[]) {
   printf("Enter the number you'd like to factor.\n");
   scanf("%d", &n);
  } else {
-  n = atoi(argv[1]);
+  if (strcmp(argv[1], "-l") == 0 || strcmp(argv[1], "--list") == 0) {
+   list_primes(atoi(argv[2]));
+   return 0;
+  } else {
+   n = atoi(argv[1]);
+  }
  }
  p = n;
 
