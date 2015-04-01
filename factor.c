@@ -33,13 +33,24 @@ int main(int argc, char *argv[]) {
  r = 1;
  if (argc < 2) {
   printf("Enter the number you'd like to factor.\n");
-  scanf("%d", &n);
+  for (scanf("%d", &n); n <= 0; scanf("%d",&n)) {
+   while (fgetc(stdin) != '\n');
+   printf("Invalid input. Enter an integer to factor: ");
+  }
  } else {
   if (strcmp(argv[1], "-l") == 0 || strcmp(argv[1], "--list") == 0) {
    list_primes(atoi(argv[2]));
+   if (list_primes <= 0) {
+    printf("Invalid argument.\n");
+    return 1;
+   }
    return 0;
   } else {
    n = atoi(argv[1]);
+   if (n <= 0) {
+    printf("Invalid argument.\n");
+    return 0;
+   }
   }
  }
  p = n;
